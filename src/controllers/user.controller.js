@@ -18,17 +18,28 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
-exports.getUser = async (req, res, next) => {
+// exports.getUser = async (req, res, next) => {
+//   try {
+//     const user = await userService.getUser(req.params.id);
+//     if (!user) {
+//       logger.warn(`User not found: ${req.params.id}`);
+//       return res.status(404).json({ message: 'User not found' });
+//     }
+//     logger.info(`User retrieved: ${user.id}`);
+//     res.status(200).json(user);
+//   } catch (error) {
+//     logger.error(`Error in getUser: ${error.message}`);
+//     next(error);
+//   }
+// };
+
+exports.getAllUsers = async (req, res, next) => {
   try {
-    const user = await userService.getUser(req.params.id);
-    if (!user) {
-      logger.warn(`User not found: ${req.params.id}`);
-      return res.status(404).json({ message: 'User not found' });
-    }
-    logger.info(`User retrieved: ${user.id}`);
-    res.status(200).json(user);
+    const users = await userService.getAllUsers();
+    logger.info(`Retrieved all users. Count: ${users.length}`);
+    res.status(200).json(users);
   } catch (error) {
-    logger.error(`Error in getUser: ${error.message}`);
+    logger.error(`Error in getAllUsers: ${error.message}`);
     next(error);
   }
 };
