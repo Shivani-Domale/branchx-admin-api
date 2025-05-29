@@ -1,27 +1,30 @@
 {
   "name": "branchx-admin-apis",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "npx sequelize-cli db:migrate --migrations-path ./src/migrations --models-path ./src/models --config ./src/config/config.json",
+    "seed": "npx sequelize-cli db:seed:all --seeders-path ./src/seeders --models-path ./src/models --config ./src/config/config.json",
+    "undo": "npx sequelize-cli db:migrate:undo --migrations-path ./src/migrations --models-path ./src/models --config ./src/config/config.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "nodemailer": "^7.0.3",
-    "pg": "^8.16.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.0",
     "sequelize-cli": "^6.6.3"
   }
 }
