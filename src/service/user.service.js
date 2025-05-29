@@ -6,3 +6,7 @@ exports.createUser = async (data) => {
   await sendEmail(user);
   return user;
 };
+
+exports.getAllUsers = async () => {
+  return await userRepository.getAllUsers();
+};

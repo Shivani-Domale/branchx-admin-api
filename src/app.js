@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes); 
 
 // Global error handler middleware must be last
 app.use(errorHandler);
